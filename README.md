@@ -1,5 +1,20 @@
 # Slidy HTML Builder
 
+## Prerequisites
+
+* GHC
+* Cabal
+* Pandoc
+
+### Example on Ubuntu
+
+```sh
+sudo apt-get install haskell-platform
+export PATH=$HOME/.cabal/bin:$PATH
+cabal update
+cabal install pandoc
+```
+
 ## Installation
 
 ```sh
