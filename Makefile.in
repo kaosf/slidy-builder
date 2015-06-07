@@ -1,0 +1,12 @@
+PREFIX=
+
+all:
+
+install: all
+	mkdir -p $(PREFIX)/bin
+	cp slidygenerate $(PREFIX)/bin
+
+uninstall:
+	rm $(PREFIX)/bin/slidygenerate
+
+clean:

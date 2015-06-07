@@ -1,0 +1,12 @@
+#!/bin/bash
+
+[ -f slidy.css ] || wget http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css
+[ -f slidy.js ] || wget http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js
+
+pandoc -i -t slidy -s -V slidy-url=SLIDYURL \
+  | sed 's|SLIDYURL/styles/slidy.css|slidy.css|' \
+  | sed 's|SLIDYURL/scripts/slidy.js|slidy.js|'
+echo '<!-- Pandoc version:'
+pandoc --version \
+  | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
+echo '-->'
