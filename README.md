@@ -1,4 +1,4 @@
-# Slidy HTML Generator
+# Slidy HTML Builder
 
 ## Installation
 
@@ -13,7 +13,7 @@ make install
 ## Usage
 
 ```sh
-slidygenerate < input.md > index.html
+slidybuild < input.md > index.html
 ```
 
 `index.html`, `slidy.css` and `slidy.js` are destination files.
