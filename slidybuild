@@ -1,12 +1,33 @@
 #!/bin/bash
 
-[ -f slidy.css ] || wget http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css
-[ -f slidy.js ] || wget http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js
+if [[ $1 = '-l' ]]; then
+  LOCALCHECK=1
+else
+  LOCALCHECK=
+fi
 
-pandoc -i -t slidy -s -V slidy-url=SLIDYURL \
-  | sed 's|SLIDYURL/styles/slidy.css|slidy.css|' \
-  | sed 's|SLIDYURL/scripts/slidy.js|slidy.js|'
-echo '<!-- Pandoc version:'
-pandoc --version \
-  | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
-echo '-->'
+CACHEDIR=$HOME/.slidy-builder
+
+if [ ! -z $LOCALCHECK ]; then
+  mkdir -p $CACHEDIR/slidy/{styles,scripts}
+  [ -f $CACHEDIR/slidy/styles/slidy.css ] || \
+    wget http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css \
+      -O $CACHEDIR/slidy/styles/slidy.css
+  [ -f $CACHEDIR/slidy/scripts/slidy.js ] || \
+    wget http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js \
+      -O $CACHEDIR/slidy/scripts/slidy.js
+fi
+
+if [ -z $LOCALCHECK ]; then
+  pandoc -i -t slidy -s
+  echo '<!-- Pandoc version:'
+  pandoc --version \
+    | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
+  echo '-->'
+else
+  pandoc -i -t slidy -s -V slidy-url="file://${CACHEDIR}/slidy"
+  echo '<!-- Pandoc version:'
+  pandoc --version \
+    | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
+  echo '-->'
+fi
