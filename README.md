@@ -1,5 +1,9 @@
 # Slidy HTML Builder
 
+## Example
+
+http://kaosf.github.io/slidy-example
+
 ## Prerequisites
 
 * GHC
