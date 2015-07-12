@@ -19,7 +19,7 @@ if [ ! -z $LOCALCHECK ]; then
 
   [ -f $CACHEDIR/2.5.3.tar.gz ] || \
     wget https://github.com/mathjax/MathJax/archive/2.5.3.tar.gz -O $CACHEDIR
-  [ -f $CACHEDIR/MathJax-2.5.3 ] || \
+  [ -d $CACHEDIR/MathJax-2.5.3 ] || \
     tar xzf $CACHEDIR/2.5.3.tar.gz -C $CACHEDIR
 fi
 
