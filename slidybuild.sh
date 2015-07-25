@@ -24,17 +24,17 @@ if [ ! -z $LOCALCHECK ]; then
 fi
 
 if [ -z $LOCALCHECK ]; then
-  pandoc -i -t slidy -s --mathjax \
+  $PREFIX/libexec/slidy-builder/pandoc -i -t slidy -s --mathjax \
     | sed 's|//cdn.mathjax.org|https://cdn.mathjax.org|'
   echo '<!-- Pandoc version:'
-  pandoc --version \
+  $PREFIX/libexec/slidy-builder/pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
   echo '-->'
 else
-  pandoc -i -t slidy -s --mathjax -V slidy-url="file://${CACHEDIR}/slidy" \
+  $PREFIX/libexec/slidy-builder/pandoc -i -t slidy -s --mathjax -V slidy-url="file://${CACHEDIR}/slidy" \
     | sed "s|//cdn.mathjax.org/mathjax/latest|file://${CACHEDIR}/MathJax-2.5.3|"
   echo '<!-- Pandoc version:'
-  pandoc --version \
+  $PREFIX/libexec/slidy-builder/pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
   echo '-->'
 fi
