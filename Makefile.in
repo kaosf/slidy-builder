@@ -7,7 +7,7 @@ all: slidybuild pandoc
 	chmod +x $@
 
 pandoc:
-	wget https://github.com/kaosf/slidy-builder/releases/download/1.0.0/pandoc
+	wget https://github.com/kaosf/slidy-builder/releases/download/1.0.1/pandoc
 	chmod +x pandoc
 
 install: all
