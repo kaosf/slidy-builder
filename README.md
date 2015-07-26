@@ -55,6 +55,6 @@ offline.
 
 ## License
 
-[GNU GPL v2.0](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+[MIT](http://opensource.org/licenses/MIT)
 
 Copyright (C) 2015 ka
