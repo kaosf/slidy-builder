@@ -1,12 +1,23 @@
 # Slidy HTML Builder
 
-Version 1.0.1.
-
-Pandoc version is 1.15.0.6.
-
 ## Example
 
 http://kaosf.github.io/slidy-example
+
+## Prerequisites
+
+* GHC
+* Cabal
+* Pandoc
+
+### Example on Ubuntu
+
+```sh
+sudo apt-get install haskell-platform
+export PATH=$HOME/.cabal/bin:$PATH
+cabal update
+cabal install pandoc
+```
 
 ## Installation
 
@@ -44,6 +55,6 @@ offline.
 
 ## License
 
-[GNU GPL v2.0](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+[MIT](http://opensource.org/licenses/MIT)
 
 Copyright (C) 2015 ka

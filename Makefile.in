@@ -1,25 +1,12 @@
 PREFIX=
 
-all: slidybuild pandoc
-
-.sh:
-	sed 's|\$$PREFIX|$(PREFIX)|g' $< > $@
-	chmod +x $@
-
-pandoc:
-	wget https://github.com/kaosf/slidy-builder/releases/download/1.0.1/pandoc
-	chmod +x pandoc
+all:
 
 install: all
-	mkdir -p $(PREFIX)/libexec/slidy-builder
-	cp pandoc $(PREFIX)/libexec/slidy-builder
 	mkdir -p $(PREFIX)/bin
 	cp slidybuild $(PREFIX)/bin
 
 uninstall:
 	rm $(PREFIX)/bin/slidybuild
-	rm -rf $(PREFIX)/libexec/slidy-builder
 
 clean:
-	rm -f slidybuild
-	rm -f pandoc

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ $1 = '-v' || $1 = '--version' ]]; then
-  echo 'Slidy Builder version 1.0.1'
-  exit 0
-fi
-
 if [[ $1 = '-l' ]]; then
   LOCALCHECK=1
 else
@@ -29,17 +24,17 @@ if [ ! -z $LOCALCHECK ]; then
 fi
 
 if [ -z $LOCALCHECK ]; then
-  $PREFIX/libexec/slidy-builder/pandoc -i -t slidy -s --mathjax \
+  pandoc -i -t slidy -s --mathjax \
     | sed 's|//cdn.mathjax.org|https://cdn.mathjax.org|'
   echo '<!-- Pandoc version:'
-  $PREFIX/libexec/slidy-builder/pandoc --version \
+  pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
   echo '-->'
 else
-  $PREFIX/libexec/slidy-builder/pandoc -i -t slidy -s --mathjax -V slidy-url="file://${CACHEDIR}/slidy" \
+  pandoc -i -t slidy -s --mathjax -V slidy-url="file://${CACHEDIR}/slidy" \
     | sed "s|//cdn.mathjax.org/mathjax/latest|file://${CACHEDIR}/MathJax-2.5.3|"
   echo '<!-- Pandoc version:'
-  $PREFIX/libexec/slidy-builder/pandoc --version \
+  pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
   echo '-->'
 fi
