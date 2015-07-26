@@ -25,7 +25,7 @@ fi
 
 if [ -z $LOCALCHECK ]; then
   pandoc -i -t slidy -s --mathjax \
-    | sed 's|//cdn.mathjax.org|https://cdn.mathjax.org|'
+    | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
   echo '<!-- Pandoc version:'
   pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
