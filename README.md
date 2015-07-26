@@ -1,9 +1,5 @@
 # Slidy HTML Builder
 
-Version 1.0.1.
-
-Pandoc version is 1.15.0.6.
-
 ## Example
 
 http://kaosf.github.io/slidy-example
