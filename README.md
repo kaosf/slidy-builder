@@ -1,5 +1,7 @@
 # Slidy HTML Builder
 
+Version 1.0.2
+
 ## Example
 
 http://kaosf.github.io/slidy-example
