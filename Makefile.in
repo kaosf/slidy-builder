@@ -8,7 +8,6 @@ all: slidybuild pandoc
 
 pandoc:
 	wget https://github.com/kaosf/slidy-builder/releases/download/1.0.0/pandoc
-	chmod +x pandoc
 
 install: all
 	mkdir -p $(PREFIX)/libexec/slidy-builder
@@ -21,5 +20,5 @@ uninstall:
 	rm -rf $(PREFIX)/libexec/slidy-builder
 
 clean:
-	rm -f slidybuild
-	rm -f pandoc
+	rm slidybuild
+	rm pandoc
