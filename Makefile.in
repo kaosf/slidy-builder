@@ -1,14 +1,8 @@
 PREFIX=
 
-all: slidybuild
-
-.sh:
-	sed 's|\$$PREFIX|$(PREFIX)|g' $< > $@
-	chmod +x $@
+all:
 
 install: all
-	mkdir -p $(PREFIX)/libexec/slidy-builder
-	cp pandoc $(PREFIX)/libexec/slidy-builder
 	mkdir -p $(PREFIX)/bin
 	cp slidybuild $(PREFIX)/bin
 
@@ -16,4 +10,3 @@ uninstall:
 	rm $(PREFIX)/bin/slidybuild
 
 clean:
-	rm slidybuild
