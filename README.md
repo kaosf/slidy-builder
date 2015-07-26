@@ -16,9 +16,16 @@ http://kaosf.github.io/slidy-example
 
 ```sh
 sudo apt-get install haskell-platform
-export PATH=$HOME/.cabal/bin:$PATH
 cabal update
+cabal install cabal-install
+export PATH=$HOME/.cabal/bin:$PATH
 cabal install pandoc
+```
+
+If you fail to install `cabal-install`, try the following command to clean up.
+
+```sh
+rm -rf ~/.cabal ~/.ghc
 ```
 
 ## Installation
@@ -54,6 +61,7 @@ offline.
 * https://www.mathjax.org/
 * http://docs.mathjax.org/en/latest/start.html
 * http://pandoc.org/demos.html
+* https://twitter.com/ggkuron/status/625329701066665984
 
 ## License
 
