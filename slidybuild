@@ -23,7 +23,7 @@ if [ ! -z $LOCALCHECK ]; then
       -O $CACHEDIR/slidy/scripts/slidy.js
 
   [ -f $CACHEDIR/2.5.3.tar.gz ] || \
-    wget https://github.com/mathjax/MathJax/archive/2.5.3.tar.gz -O $CACHEDIR
+    wget https://github.com/mathjax/MathJax/archive/2.5.3.tar.gz -O $CACHEDIR/2.5.3.tar.gz
   [ -d $CACHEDIR/MathJax-2.5.3 ] || \
     tar xzf $CACHEDIR/2.5.3.tar.gz -C $CACHEDIR
 fi
