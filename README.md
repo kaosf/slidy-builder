@@ -1,6 +1,6 @@
 # Slidy HTML Builder
 
-Version 1.0.4
+Version 1.1.0
 
 ## Example
 
