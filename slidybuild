@@ -16,10 +16,10 @@ CACHEDIR=$HOME/.slidy-builder
 if [ ! -z $LOCALCHECK ]; then
   mkdir -p $CACHEDIR/slidy/{styles,scripts}
   [ -f $CACHEDIR/slidy/styles/slidy.css ] || \
-    wget http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css \
+    wget https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css \
       -O $CACHEDIR/slidy/styles/slidy.css
   [ -f $CACHEDIR/slidy/scripts/slidy.js ] || \
-    wget http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js \
+    wget https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js \
       -O $CACHEDIR/slidy/scripts/slidy.js
 
   [ -f $CACHEDIR/2.5.3.tar.gz ] || \
@@ -29,8 +29,14 @@ if [ ! -z $LOCALCHECK ]; then
 fi
 
 if [ -z $LOCALCHECK ]; then
-  pandoc -i -t slidy -s --mathjax \
-    | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
+  if [[ $1 = '--https' ]]; then
+    pandoc -i -t slidy -s --mathjax \
+      | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|' \
+      | sed 's|http://www.w3.org/Talks|https://www.w3.org/Talks|'
+  else
+    pandoc -i -t slidy -s --mathjax \
+      | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
+  fi
   echo '<!-- Pandoc version:'
   pandoc --version \
     | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'

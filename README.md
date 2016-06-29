@@ -54,6 +54,13 @@ In this case, `slidy.css`, `slidy.js` and MathJax files are downloaded once,
 and the `index.html` that is generated refers them. So you can check the slides
 offline.
 
+```sh
+slidybuild --https < input.md > index.html
+```
+
+You can modify `slidy.css` and `slidy.js` URLs from http to https with `--https`
+option.
+
 ## References
 
 * https://github.com/igrep/igreque.info/blob/b880fbf9ce0443f4c756a9843dc065fa7e67ac6f/main.hs#L64-L69
