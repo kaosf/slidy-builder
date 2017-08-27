@@ -55,11 +55,10 @@ and the `index.html` that is generated refers them. So you can check the slides
 offline.
 
 ```sh
-slidybuild --https < input.md > index.html
+slidybuild --http < input.md > index.html
 ```
 
-You can modify `slidy.css` and `slidy.js` URLs from http to https with `--https`
-option.
+You can keep `slidy.css` and `slidy.js` URLs *http* with `--http` option.
 
 ## References
 

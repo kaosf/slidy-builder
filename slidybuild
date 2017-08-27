@@ -29,13 +29,13 @@ if [ ! -z $LOCALCHECK ]; then
 fi
 
 if [ -z $LOCALCHECK ]; then
-  if [[ $1 = '--https' ]]; then
+  if [[ $1 = '--http' ]]; then
+    pandoc -i -t slidy -s --mathjax \
+      | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
+  else
     pandoc -i -t slidy -s --mathjax \
       | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|' \
       | sed 's|http://www.w3.org/Talks|https://www.w3.org/Talks|'
-  else
-    pandoc -i -t slidy -s --mathjax \
-      | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
   fi
   echo '<!-- Pandoc version:'
   pandoc --version \
