@@ -28,6 +28,19 @@ If you fail to install `cabal-install`, try the following command to clean up.
 rm -rf ~/.cabal ~/.ghc
 ```
 
+### Example on CentOS
+
+```sh
+```
+
+TODO: Write
+
+### Example on Arch
+
+```sh
+sudo pacman -S pandoc
+```
+
 ## Installation
 
 ```sh
@@ -35,7 +48,9 @@ rm -rf ~/.cabal ~/.ghc
 # or
 # ./configure --prefix=$HOME/local
 
-make install
+sudo make install
+# or
+# make install
 ```
 
 ## Usage
@@ -73,4 +88,4 @@ You can keep `slidy.css` and `slidy.js` URLs *http* with `--http` option.
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (C) 2015 ka
+Copyright (C) 2015-2017 ka
