@@ -88,4 +88,4 @@ You can keep `slidy.css` and `slidy.js` URLs *http* with `--http` option.
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (C) 2015-2017 ka
+Copyright (C) 2015-2019 ka
