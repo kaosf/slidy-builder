@@ -6,7 +6,7 @@ LOCALCHECK=0
 for OPT in "$@"; do
   case "$OPT" in
     '-v'|'--version')
-      echo 'Slidy Builder version 2.0.0'
+      echo 'Slidy Builder version 2.1.0'
       exit 0
       ;;
     '--http')
