@@ -42,9 +42,11 @@ fi
 if [ $LOCALCHECK = 0 ]; then
   if [ $HTTPS = 0 ]; then
     pandoc -i -t slidy -s --mathjax \
+      | sed 's/ class="incremental"//' \
       | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
   else
     pandoc -i -t slidy -s --mathjax \
+      | sed 's/ class="incremental"//' \
       | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|' \
       | sed 's|http://www.w3.org/Talks|https://www.w3.org/Talks|'
   fi
