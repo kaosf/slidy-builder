@@ -1,19 +1,29 @@
 #!/bin/bash
 
-if [[ $1 = '-v' || $1 = '--version' ]]; then
-  echo 'Slidy Builder version 2.0.0'
-  exit 0
-fi
+HTTPS=1
+LOCALCHECK=0
 
-if [[ $1 = '-l' ]]; then
-  LOCALCHECK=1
-else
-  LOCALCHECK=
-fi
+for OPT in "$@"; do
+  case "$OPT" in
+    '-v'|'--version')
+      echo 'Slidy Builder version 2.0.0'
+      exit 0
+      ;;
+    '--http')
+      HTTPS=0
+      ;;
+    '-l')
+      LOCALCHECK=1
+      ;;
+    *)
+      ;;
+  esac
+  shift
+done
 
 CACHEDIR=$HOME/.slidy-builder
 
-if [ ! -z $LOCALCHECK ]; then
+if [ $LOCALCHECK = 1 ]; then
   mkdir -p $CACHEDIR/slidy/{styles,scripts}
   [ -f $CACHEDIR/slidy/styles/slidy.css ] || \
     wget https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css \
@@ -29,8 +39,8 @@ if [ ! -z $LOCALCHECK ]; then
     tar xzf $CACHEDIR/${MATHJAX_VERSION}.tar.gz -C $CACHEDIR
 fi
 
-if [ -z $LOCALCHECK ]; then
-  if [[ $1 = '--http' ]]; then
+if [ $LOCALCHECK = 0 ]; then
+  if [ $HTTPS = 0 ]; then
     pandoc -i -t slidy -s --mathjax \
       | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|'
   else
