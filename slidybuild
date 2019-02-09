@@ -22,10 +22,11 @@ if [ ! -z $LOCALCHECK ]; then
     wget https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js \
       -O $CACHEDIR/slidy/scripts/slidy.js
 
-  [ -f $CACHEDIR/2.5.3.tar.gz ] || \
-    wget https://github.com/mathjax/MathJax/archive/2.5.3.tar.gz -O $CACHEDIR/2.5.3.tar.gz
-  [ -d $CACHEDIR/MathJax-2.5.3 ] || \
-    tar xzf $CACHEDIR/2.5.3.tar.gz -C $CACHEDIR
+  MATHJAX_VERSION=2.7.5
+  [ -f $CACHEDIR/${MATHJAX_VERSION}.tar.gz ] || \
+    wget https://github.com/mathjax/MathJax/archive/${MATHJAX_VERSION}.tar.gz -O $CACHEDIR/${MATHJAX_VERSION}.tar.gz
+  [ -d $CACHEDIR/MathJax-${MATHJAX_VERSION} ] || \
+    tar xzf $CACHEDIR/${MATHJAX_VERSION}.tar.gz -C $CACHEDIR
 fi
 
 if [ -z $LOCALCHECK ]; then
