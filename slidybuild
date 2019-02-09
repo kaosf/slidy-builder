@@ -37,15 +37,12 @@ if [ -z $LOCALCHECK ]; then
       | sed 's|src="//cdn.mathjax.org|src="https://cdn.mathjax.org|' \
       | sed 's|http://www.w3.org/Talks|https://www.w3.org/Talks|'
   fi
-  echo '<!-- Pandoc version:'
-  pandoc --version \
-    | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
-  echo '-->'
 else
   pandoc -i -t slidy -s --mathjax -V slidy-url="file://${CACHEDIR}/slidy" \
     | sed "s|//cdn.mathjax.org/mathjax/latest|file://${CACHEDIR}/MathJax-2.5.3|"
-  echo '<!-- Pandoc version:'
-  pandoc --version \
-    | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
-  echo '-->'
 fi
+
+echo '<!-- Pandoc version:'
+pandoc --version \
+  | sed 's/^Default user data directory: .*/Default user data directory: <DELETED>/'
+echo '-->'
